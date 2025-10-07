@@ -1,0 +1,73 @@
+{% extends 'contractorbase.html' %}
+{% block main %}
+<div class="container mt-4">
+    <h3 class="text-center text-primary mb-4">New Projects 🏗️</h3>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover table-striped align-middle text-center shadow-sm">
+            <thead class="table-dark">
+                <tr>
+                    <th>S. No</th>
+                    <th>Project Name</th>
+                    <th>Duration (Days)</th>
+                    <th>Budget</th>
+                    <th>Location</th>
+                    <th>Homeowner</th>
+                    <th>Status</th>
+                    <th>Plot Size</th>
+                    <th>House Type</th>
+                    <th>No. of Floors</th>
+                    <th>Basement</th>
+                    <th>Parking</th>
+                    <th>Bedrooms</th>
+                    <th>Bathrooms</th>
+                    <th>Kitchen/Floor</th>
+                    <th>Additional Rooms</th>
+                    <th>Outdoor Areas</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in projects %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td class="fw-semibold">{{ p.projectname }}</td>
+                    <td>{{ p.duration }}</td>
+                    <td>₹{{ p.budget }}</td>
+                    <td>{{ p.location }}</td>
+                    <td class="text-start">
+                        {% if p.homeowner.picture %}
+                        <div class="d-flex align-items-center gap-2">
+                            <img src="{{ p.homeowner.picture.url }}" alt="Profile" class="rounded-circle border"
+                                width="40" height="40">
+                            <div>
+                                <strong>{{ p.homeowner.name }}</strong><br>
+                                <small class="text-muted">{{ p.homeowner.contactno }}</small>
+                            </div>
+                        </div>
+                        {% else %}
+                        <strong>{{ p.homeowner.name }}</strong><br>
+                        <small class="text-muted">{{ p.homeowner.contactno }}</small>
+                        {% endif %}
+                    </td>
+                    <td><span class="badge bg-success">{{ p.status }}</span></td>
+                    <td>{{ p.plot_size }}</td>
+                    <td>{{ p.house_type }}</td>
+                    <td>{{ p.num_floors }}</td>
+                    <td>{{ p.basement }}</td>
+                    <td>{{ p.parking_required }}</td>
+                    <td>{{ p.bedrooms }}</td>
+                    <td>{{ p.bathrooms }}</td>
+                    <td>{{ p.kitchen_each_floor }}</td>
+                    <td>{{ p.additional_rooms }}</td>
+                    <td>{{ p.outdoor_areas }}</td>
+                    <td>
+                        <a href="{% url 'applyproject' id=p.id %}" class="btn btn-sm btn-outline-primary">Apply</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

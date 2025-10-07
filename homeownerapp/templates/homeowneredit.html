@@ -1,0 +1,103 @@
+{% extends 'homeownerbase.html' %}
+{% load static %}
+
+{% block home %}
+<style>
+    .btn-custom-green {
+        background-color: #61d910;
+        color: #fff;
+        border: none;
+    }
+
+    .btn-custom-green:hover {
+        background-color: #54c50e;
+        color: #fff;
+    }
+
+    .border-left-green {
+        border-left: 4px solid #61d910;
+    }
+
+    .text-green {
+        color: #61d910;
+    }
+
+    .form-label {
+        color: #444;
+    }
+
+    .form-control:focus {
+        border-color: #61d910;
+        box-shadow: 0 0 0 0.2rem rgba(97, 217, 16, 0.25);
+    }
+</style>
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card shadow-sm border-0 rounded-4 bg-white border-left-green">
+                <div class="card-body p-4">
+                    <h3 class="mb-4 fw-bold text-green">Edit Profile</h3>
+
+                    <form method="post" enctype="multipart/form-data" novalidate>
+                        {% csrf_token %}
+                        <div class="row g-3">
+
+                            <!-- Name -->
+                            <div class="col-md-6">
+                                <label for="name" class="form-label">Full Name <span
+                                        class="text-danger">*</span></label>
+                                <input type="text" name="name" id="name" class="form-control"
+                                    value="{{ homeowner.name|default:'' }}" required>
+                            </div>
+
+                            <!-- Contact Number -->
+                            <div class="col-md-6">
+                                <label for="con" class="form-label">Contact Number <span
+                                        class="text-danger">*</span></label>
+                                <input type="tel" name="contactno" id="con" class="form-control"
+                                    value="{{ homeowner.contactno|default:'' }}" pattern="[0-9+ ]{7,15}" required>
+                            </div>
+
+                            <!-- Email (disabled) -->
+                            <div class="col-md-6">
+                                <label for="em" class="form-label">Email</label>
+                                <input type="email" name="email" id="em" class="form-control"
+                                    value="{{ homeowner.email|default:'' }}" disabled>
+                            </div>
+
+                            <!-- Profile Picture -->
+                            <div class="col-md-6">
+                                <label for="pro" class="form-label">Profile Picture</label>
+                                <input type="file" name="profile" id="pro" class="form-control" accept="image/*">
+                            </div>
+
+                            <!-- Address -->
+                            <div class="col-12">
+                                <label for="ad" class="form-label">Full Address <span
+                                        class="text-danger">*</span></label>
+                                <textarea name="address" id="ad" class="form-control" rows="2"
+                                    required>{{ homeowner.address|default:'' }}</textarea>
+                            </div>
+
+                            <!-- Bio -->
+                            <div class="col-12">
+                                <label for="bio" class="form-label">Bio</label>
+                                <textarea name="bio" id="bio" class="form-control"
+                                    rows="3">{{ homeowner.bio|default:'' }}</textarea>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="col-12 text-end">
+                                <button type="submit" class="btn btn-custom-green px-4">Save Changes</button>
+                            </div>
+
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

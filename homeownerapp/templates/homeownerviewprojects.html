@@ -1,0 +1,69 @@
+{% extends 'homeownerbase.html' %}
+{% block home %}
+<div class="container mt-5 mb-5 p-4 shadow-lg rounded-4 bg-white border">
+    <h2 class="text-center text-primary fw-bold mb-4 display-6">My Projects 🎉</h2>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover table-striped align-middle text-center shadow-sm">
+            <thead class="table-primary text-white">
+                <tr>
+                    <th>S. No</th>
+                    <th>Project Name</th>
+                    <th>Duration (Days)</th>
+                    <th>Budget (₹)</th>
+                    <th>Location</th>
+                    <th>Progress</th>
+                    <th>Status</th>
+                    <th>Plot Size</th>
+                    <th>House Type</th>
+                    <th>No. of Floors</th>
+                    <th>Basement</th>
+                    <th>Parking</th>
+                    <th>Bedrooms</th>
+                    <th>Bathrooms</th>
+                    <th>Kitchen/Floor</th>
+                    <th>Additional Rooms</th>
+                    <th>Outdoor Areas</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in projects %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td class="fw-semibold">{{ p.projectname }}</td>
+                    <td>{{ p.duration }}</td>
+                    <td>₹{{ p.budget }}</td>
+                    <td>{{ p.location }}</td>
+                    <td>
+                        <div class="progress" style="height: 20px;">
+                            <div class="progress-bar bg-success" role="progressbar" aria-valuenow="{{ p.progress }}"
+                                aria-valuemin="0" aria-valuemax="100">
+                                {{ p.progress }}%
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="badge bg-success px-3 py-2 rounded-pill">{{ p.status }}</span>
+                    </td>
+                    <td>{{ p.plot_size }}</td>
+                    <td>{{ p.house_type }}</td>
+                    <td>{{ p.num_floors }}</td>
+                    <td>{{ p.basement }}</td>
+                    <td>{{ p.parking_required }}</td>
+                    <td>{{ p.bedrooms }}</td>
+                    <td>{{ p.bathrooms }}</td>
+                    <td>{{ p.kitchen_each_floor }}</td>
+                    <td>{{ p.additional_rooms }}</td>
+                    <td>{{ p.outdoor_areas }}</td>
+                    <td>
+                        <a href="{% url 'homeownerviewapplications' id=p.id %}"
+                            class="btn btn-sm btn-outline-primary rounded-pill">View Contractor</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

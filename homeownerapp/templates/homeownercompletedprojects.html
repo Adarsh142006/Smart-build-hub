@@ -1,0 +1,46 @@
+{% extends 'homeownerbase.html' %}
+{% block home %}
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card shadow-sm">
+                <div class="card-header  text-white text-center" style="background-color: #61d910;">
+                    <h4 class="mb-0">Completed Projects</h4>
+                </div>
+                <div class="card-body">
+                    {% if projects %}
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover align-middle">
+                            <thead class="table-light">
+                                <tr class="text-center">
+                                    <th scope="col">S.No</th>
+                                    <th scope="col">Project Name</th>
+                                    <th scope="col">Contractor Name</th>
+                                    <th scope="col">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for p in projects %}
+                                <tr class="text-center">
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ p.project.name }}</td>
+                                    <td>{{ p.contractor.name }}</td>
+                                    <td>
+                                        <span class="badge bg-success px-3 py-2">
+                                            {{ p.status }}
+                                        </span>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                    <p class="text-center text-muted">No completed projects to display.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

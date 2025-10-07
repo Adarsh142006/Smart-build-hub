@@ -1,0 +1,264 @@
+{% extends 'base.html' %}
+{% load static %}
+{%block main %}
+<!-- img start -->
+<div class="row">
+    <div class="col-sm-12" id="img2">
+        <h1
+            style="font-size: 80px; margin-left: 400px; margin-top: 250px; font-family: parabolic Text Bold Oblique; color: #f8ecd5;">
+            About Smart Build Hub</h1>
+        <!-- <h1 style="margin-left: 750px; font-size: 70px; font-family: Harmond SemBd Cond Ita;"> 
+           </h1> -->
+    </div>
+</div>
+<!-- img end -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="row">
+            <div class="col-2">
+                <div id="list-example" class="list-group position-sticky shadow rounded-4"
+                    style="top: 100px; background-color: #fff; border: 2px solid #ed6842; padding: 10px;">
+                    <a class="list-group-item list-group-item-action mb-2"
+                        style="font-weight: 600; border-left: 4px solid transparent; transition: 0.3s;"
+                        onmouseover="this.style.borderLeft='4px solid #ed6842'"
+                        onmouseout="this.style.borderLeft='4px solid transparent'" href="#list-item-1">
+                        <img src="{% static 'img/pluse.svg' %}" alt="" height="18px" class="me-2">Who is SBH
+                    </a>
+                    <a class="list-group-item list-group-item-action mb-2"
+                        style="font-weight: 600; border-left: 4px solid transparent; transition: 0.3s;"
+                        onmouseover="this.style.borderLeft='4px solid #ed6842'"
+                        onmouseout="this.style.borderLeft='4px solid transparent'" href="#list-item-2">
+                        <img src="{% static 'img/pluse.svg' %}" alt="" height="18px" class="me-2">About Team
+                    </a>
+                    <a class="list-group-item list-group-item-action mb-2"
+                        style="font-weight: 600; border-left: 4px solid transparent; transition: 0.3s;"
+                        onmouseover="this.style.borderLeft='4px solid #ed6842'"
+                        onmouseout="this.style.borderLeft='4px solid transparent'" href="#list-item-3">
+                        <img src="{% static 'img/pluse.svg' %}" alt="" height="18px" class="me-2">Our Values
+                    </a>
+                    <a class="list-group-item list-group-item-action"
+                        style="font-weight: 600; border-left: 4px solid transparent; transition: 0.3s;"
+                        onmouseover="this.style.borderLeft='4px solid #ed6842'"
+                        onmouseout="this.style.borderLeft='4px solid transparent'" href="#list-item-4">
+                        <img src="{% static 'img/pluse.svg' %}" alt="" height="18px" class="me-2">Our Commitments
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-10">
+                <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true"
+                    class="scrollspy-example" tabindex="0">
+                    <div class="row mt-5">
+                        <div class="col-sm-6">
+                            <h4 id="list-item-1" style="margin-top: 85px;text-align: center; margin-bottom: 20px;"><img
+                                    src="{% static 'img/pluse.svg' %}" alt="" height="20px" id="imgpl2" class="me-2">Who
+                                is
+                                SBH</h4>
+                            <p>Smart Build Hub is your one-stop digital platform
+                                dedicated to revolutionizing
+                                the construction industry. We bring together advanced technology, expert
+                                knowledge, and modern tools to simplify and streamline every stage of building —
+                                from planning and design to execution and management.
+                                Our mission is to make construction smarter, faster, and more efficient by
+                                providing builders, contractors, and homeowners with the right resources,
+                                insights, and services. Whether you're managing a large infrastructure project
+                                or constructing a personal dream home, Smart Build Hub offers the guidance,
+                                products, and professional connections you need to get the job done right.</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="card text-bg-dark rounded-5">
+                                <img src="{% static 'img/ab2.jpg' %}" alt="" id="img5">
+                                <div class="card-img-overlay">
+                                    <!-- <h5 class="card-title">Card title</h5>
+                                            <p class="card-text">This is a wider card with supporting text below as a
+                                                natural lead-in to additional content. This content is a little bit
+                                                longer.</p>
+                                            <p class="card-text"><small>Last updated 3 mins ago</small></p> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-sm-6">
+                            <h4 id="list-item-2" style="margin-top: 85px;text-align: center; margin-bottom: 20px;"><img
+                                    src="{% static 'img/pluse.svg' %}" alt="" height="20px" id="imgpl2"
+                                    class="me-2">About Team</h4>
+                            <p>At Smart Build Hub, our team is the backbone of everything we do. We are a group
+                                of passionate professionals, engineers, designers, and tech enthusiasts who
+                                share a common goal — to transform the construction industry through innovation
+                                and technology.
+
+                                Each member brings unique skills and experience from diverse fields such as
+                                civil engineering, architecture, project management, software development, and
+                                customer service. Together, we work as one unit to ensure that our users receive
+                                the best solutions, expert support, and up-to-date tools to make smarter
+                                building decisions.
+
+                                We believe in collaboration, creativity, and continuous learning — values that
+                                drive us to build better every day..</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="card text-bg-dark rounded-5">
+                                <img src="{% static 'img/ab3.jpg' %}" alt="" id="img5">
+                                <div class="card-img-overlay">
+                                    <!-- <h5 class="card-title">Card title</h5>
+                                            <p class="card-text">This is a wider card with supporting text below as a
+                                                natural lead-in to additional content. This content is a little bit
+                                                longer.</p>
+                                            <p class="card-text"><small>Last updated 3 mins ago</small></p> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-sm-6">
+                            <h4 id="list-item-3" style=" margin-top: 30px; text-align: center; margin-bottom: 20px;">
+                                <img src="{% static 'img/pluse.svg' %}" alt="" height="20px" id="imgpl2"
+                                    class="me-2">Our values
+                            </h4>
+                            <div class="row pt-2"
+                                style="border-bottom: 2px solid #ed6842; border-top: 2px solid #ed6842;">
+                                <div class="col-sm-10">
+                                    <a href="#"
+                                        style="font-weight: 600; text-decoration: none; color: black;font-size: 20px;">Passion</a>
+                                </div>
+                                <div class="col-sm-2">
+                                    <img src="{% static 'img/pluse.svg' %}" alt="" height="30px" id="imgpl2"
+                                        class="me-2">
+                                </div>
+                            </div>
+                            <div class="row pt-2" style="border-bottom: 2px solid #ed6842;">
+                                <div class="col-sm-10">
+                                    <a href="#"
+                                        style="font-weight: 600; text-decoration: none; color: black;font-size: 20px;">Harmony</a>
+                                </div>
+                                <div class="col-sm-2">
+                                    <img src="{% static 'img/pluse.svg' %}" alt="" height="30px" id="imgpl2"
+                                        class="me-2">
+                                </div>
+                            </div>
+                            <div class="row pt-2" style="border-bottom: 2px solid #ed6842;">
+                                <div class="col-sm-10">
+                                    <a href="#"
+                                        style="font-weight: 600; text-decoration: none; color: black;font-size: 20px;">Mastery</a>
+                                </div>
+                                <div class="col-sm-2">
+                                    <img src="{% static 'img/pluse.svg' %}" alt="" height="30px" id="imgpl2"
+                                        class="me-2">
+                                </div>
+                            </div>
+                            <div class="row pt-2" style="border-bottom: 2px solid #ed6842;">
+                                <div class="col-sm-10">
+                                    <a href="#"
+                                        style="font-weight: 600; text-decoration: none; color: black;font-size: 20px;">Authenticity</a>
+                                </div>
+                                <div class="col-sm-2">
+                                    <img src="{% static 'img/pluse.svg' %}" alt="" height="30px" id="imgpl2"
+                                        class="me-2">
+                                </div>
+                            </div>
+                            <div class="row pt-2" style="border-bottom: 2px solid #ed6842;">
+                                <div class="col-sm-10">
+                                    <a href="#"
+                                        style="font-weight: 600; text-decoration: none; color: black;font-size: 20px;">Corporate
+                                        Social Responsibility</a>
+                                </div>
+                                <div class="col-sm-2">
+                                    <img src="{% static 'img/pluse.svg' %}" alt="" height="30px" id="imgpl2"
+                                        class="me-2">
+                                </div>
+                            </div>
+                            <div class="row pt-2" style="border-bottom: 2px solid #ed6842;">
+                                <div class="col-sm-10">
+                                    <a href="#"
+                                        style="font-weight: 600; text-decoration: none; color: black;font-size: 20px;">Hardworking</a>
+                                </div>
+                                <div class="col-sm-2">
+                                    <img src="{% static 'img/pluse.svg' %}" alt="" height="30px" id="imgpl2"
+                                        class="me-2">
+                                </div>
+                            </div>
+                            <!-- <div class="row">
+                                <div class="col-sm-12">
+                                    <h4 class="text-end mt-4" style="font-family:parabolic Text Bold Oblique;">
+                                        <img src="{% static 'img/pluse.svg' %}" alt="" class="me-2" id="imgpl2"
+                                            height="20px">Smart
+                                        Build
+                                        Hub
+                                    </h4>
+                                </div>
+                            </div> -->
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="card text-bg-dark rounded-5">
+                                <img src="{% static 'img/ab1.jpg' %}" alt="" id="img5">
+                                <div class="card-img-overlay">
+                                    <!-- <h5 class="card-title">Card title</h5>
+                                            <p class="card-text">This is a wider card with supporting text below as a
+                                                natural lead-in to additional content. This content is a little bit
+                                                longer.</p>
+                                            <p class="card-text"><small>Last updated 3 mins ago</small></p> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-sm-6">
+                            <h4 id="list-item-4" style="margin-top: 20px;text-align: center; margin-bottom: 20px;">
+                                <img src="{% static 'img/pluse.svg' %}" alt="" height="20px" id="imgpl2"
+                                    class="me-2">Our Commitments
+                            </h4>
+                            <p style="line-height: 2.5;">At Smart
+                                Build Hub, we are
+                                committed to transforming
+                                the
+                                way construction works —
+                                making it smarter, faster, and more efficient for everyone involved.
+
+                                We promise to:<br>
+
+                                <img src="{% static 'img/pluse.svg' %}" alt="" height="20px" id="imgpl2" class="me-2">
+                                Empower our users with the latest tools, resources, and expert
+                                guidance<br>
+
+                                <img src="{% static 'img/pluse.svg' %}" alt="" height="20px" id="imgpl2"
+                                    class="me-2">Continuously innovate by integrating modern technology and
+                                staying ahead<br>
+
+                                <img src="{% static 'img/pluse.svg' %}" alt="" height="20px" id="imgpl2" class="me-2">
+                                Deliver quality and reliability in every service, product, and
+                                interaction.<br>
+
+                                <img src="{% static 'img/pluse.svg' %}" alt="" height="20px" id="imgpl2"
+                                    class="me-2">Support our community of builders, contractors, engineers, and
+                                homeowners<br>
+
+                                <img src="{% static 'img/pluse.svg' %}" alt="" height="20px" id="imgpl2"
+                                    class="me-2">Promote sustainability by encouraging responsible building
+                                practices<br>
+
+                                <img src="{% static 'img/pluse.svg' %}" alt="" height="20px" id="imgpl2" class="me-2">
+                                We’re not just building structures — we’re building trust,
+                                progress.
+                            </p>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="card text-bg-dark rounded-5">
+                                <img src="{% static 'img/ab4.jpg' %}" alt="" id="img5">
+                                <div class="card-img-overlay">
+                                    <!-- <h5 class="card-title">Card title</h5>
+                                            <p class="card-text">This is a wider card with supporting text below as a
+                                                natural lead-in to additional content. This content is a little bit
+                                                longer.</p>
+                                            <p class="card-text"><small>Last updated 3 mins ago</small></p> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'adminbase.html' %}
+{% block admin %}
+<div class="row">
+    <div class="col-sm-12">
+        <h4>manage contractors</h4>
+        <table class="table mt-3">
+            <tr>
+                <th>S.No</th>
+                <th>Name</th>
+                <th>Contact No</th>
+                <th>Email</th>
+                <th>Picture</th>
+                <th>Address</th>
+                <th>Action</th>
+            </tr>
+            {% for c in contractor %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{c.name}}</td>
+                <td>{{c.contactno}}</td>
+                <td>{{c.email}}</td>
+                <td>
+                    {% if c.picture %}
+                    <img src="{{c.picture.url}}" alt="" height="80px">
+                    {% else %}
+                    No profile
+                    {% endif %}
+                </td>
+                <td>{{c.address}}</td>
+                <td>
+                    <a href="" class="btn btn-danger rounde-3">Block<i class="fa-solid fa-trash-can"></i></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock %}

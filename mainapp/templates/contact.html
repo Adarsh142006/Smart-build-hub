@@ -1,0 +1,57 @@
+{%extends 'base.html'%}
+{% load static %}
+{%block main%}
+<!-- contact start -->
+<div class="row px-5 py-5">
+    <div class="col-sm-8">
+        <h1 style="font-size:60px;"><span style="font-family:parabolic Text Bold Oblique;">Great projects always
+                start,</span><br><span style="font-family:cursive; font-size: 35px; margin-left: 180px;"> <img
+                    src="{% static 'img/pluse.svg' %}" alt="" height="30px" class="me-3">with a simple
+                conversation.</span>
+        </h1>
+        <p style="font-weight:500; line-height: 2;margin-left: 100px;margin-top: 80px;font-size: 20px;">More
+            than just
+            designing workspaces,
+            the essence of our<br>
+            business is to offer a real experience to the<br>
+            users of the places we create.</p>
+    </div>
+    <div class="col-sm-4 px-5" style="border-left:2px solid #ed6842 ;">
+        {% if messages %}
+        {% for m in messages %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{m}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            <div class="py-4 name" style="border-bottom: 1px solid;">
+                <input type="text" name="name" id="n" class="w-100" placeholder="Name"
+                    style="border: none; outline: none;">
+            </div>
+            <div class="py-4" style="border-bottom: 1px solid  ;">
+                <input type="text" name="contactno" id="cn" class="w-100" placeholder="Contact"
+                    style="border: none; outline: none;">
+            </div>
+            <div class=" py-4" style="border-bottom: 1px solid  ;">
+                <input type="email" name="email" id="em" class="w-100" placeholder="Professional Email"
+                    style="border: none;outline: none;">
+            </div>
+            <div class=" py-4" style="border-bottom: 1px solid  ;">
+                <input type="text" name="subject" id="sub" class="w-100" placeholder="Subject"
+                    style="border: none; outline: none;">
+            </div>
+            <div class=" py-4" style="border-bottom: 1px solid  ;">
+                <textarea name="message" id="msg" class="w-100" style="border: none; outline: none;"
+                    placeholder="Message"></textarea>
+            </div>
+            <button type="submit" style="background: transparent; border: none;margin-top: 30px;"><img
+                    src="{% static 'img/pluse.svg' %}" alt="" height="20px" class="me-2" style="margin-left: 140px;"
+                    id="imgpl2">Submit</button>
+        </form>
+    </div>
+</div>
+<!-- contact end -->
+{%endblock%}

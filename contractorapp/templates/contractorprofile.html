@@ -1,0 +1,111 @@
+{% extends 'contractorbase.html' %}
+{% load static %}
+
+{% block main %}
+<style>
+    .text-brand-blue {
+        color: #1775F1;
+    }
+
+    .btn-brand-blue {
+        background-color: #1775F1;
+        color: #fff;
+        border: none;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-brand-blue:hover {
+        background-color: #125fd1;
+        transform: scale(1.03);
+    }
+
+    .profile-img {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 4px solid #1775F1;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(23, 117, 241, 0.3);
+    }
+
+    .info-card {
+        border-radius: 1rem;
+        background: linear-gradient(to bottom right, #f9f9f9, #e9f0fc);
+    }
+
+    .info-item {
+        text-align: left;
+        padding: 8px 0;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .info-label {
+        font-weight: 500;
+        color: #555;
+    }
+
+    .info-value {
+        color: #333;
+        float: right;
+        text-align: right;
+    }
+</style>
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col text-center mb-4">
+            <h2 class="fw-bold text-brand-blue">Hello Contractor 🎉</h2>
+            <p class="text-muted">Here is your profile overview</p>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-lg border-0 info-card p-4">
+                <div class="card-body text-center">
+
+                    <!-- Profile Image -->
+                    {% if contractor.picture %}
+                    <img src="{{ contractor.picture.url }}" alt="Profile Picture" class="profile-img mb-3">
+                    {% else %}
+                    <img src="{% static 'images/default-profile.png' %}" alt="Default Profile" class="profile-img mb-3">
+                    {% endif %}
+
+                    <!-- Name -->
+                    <h4 class="fw-bold text-brand-blue mb-4">{{ contractor.name }}</h4>
+
+                    <!-- Info Section -->
+                    <div class="px-3">
+                        <div class="info-item">
+                            <span class="info-label">📞 Contact:</span>
+                            <span class="info-value">{{ contractor.contactno|default:"N/A" }}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">📍 Address:</span>
+                            <span class="info-value">{{ contractor.address|default:"N/A" }}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">✉️ Email:</span>
+                            <span class="info-value">{{ contractor.email|default:"N/A" }}</span>
+                        </div>
+                        <div class="info-item" style="border-bottom: none;">
+                            <span class="info-label">📝 Bio:</span>
+                            <span class="info-value d-block mt-1 text-end">{{ contractor.bio}}</span>
+                        </div>
+                    </div>
+
+                    <!-- Edit Button -->
+                    <div class="mt-4">
+                        <a href="{% url 'contractoredit' %}"
+                            class="btn btn-brand-blue px-4 py-2 rounded-pill shadow-sm">
+                            <i class="bi bi-pencil-square me-1"></i> Edit Profile
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,255 @@
+{% extends 'adminbase.html' %}
+{% load static %}
+
+{% block style %}
+<style>
+    :root {
+        --primary-color: #6f71d6;
+        --primary-light: #8688ff;
+        --primary-dark: #5658ed;
+        --success-color: #28a745;
+        --info-color: #17a2b8;
+        --warning-color: #ffc107;
+        --danger-color: #dc3545;
+        --light-gray: #f8f9fa;
+        --dark-gray: #343a40;
+    }
+
+    .dashboard-card {
+        border-radius: 12px;
+        border: none;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        height: 100%;
+    }
+
+    .dashboard-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+    }
+
+    .card-header-style {
+        color: var(--primary-color);
+        border-bottom: 2px solid var(--primary-color);
+        padding: 12px 0;
+        font-weight: 600;
+    }
+
+    .stat-number {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: var(--primary-dark);
+        margin: 10px 0;
+    }
+
+    .view-btn {
+        background-color: rgba(111, 113, 214, 0.2);
+        color: var(--primary-dark);
+        border: none;
+        padding: 8px 20px;
+        border-radius: 8px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+        margin-top: 10px;
+    }
+
+    .view-btn:hover {
+        background-color: rgba(111, 113, 214, 0.3);
+        color: var(--primary-dark);
+        transform: translateY(-2px);
+    }
+
+    .progress-container {
+        margin: 15px 0;
+    }
+
+    .progress {
+        height: 20px;
+        border-radius: 10px;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .progress-bar-label {
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-top: 5px;
+        text-align: center;
+    }
+
+    .celebration-card {
+        background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+        border-left: 5px solid var(--primary-color);
+    }
+
+    .dashboard-img {
+        max-height: 180px;
+        object-fit: contain;
+        border-radius: 0 12px 12px 0;
+    }
+
+    @media (max-width: 768px) {
+        .dashboard-img {
+            display: none;
+        }
+
+        .col-md-8 {
+            width: 100%;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block admin %}
+<div class="container-fluid">
+    <!-- First Row -->
+    <div class="row mb-4">
+        <!-- Celebration Card -->
+        <div class="col-lg-8 col-md-12 mb-3">
+            <div class="card dashboard-card celebration-card">
+                <div class="row g-0">
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title card-header-style">Congratulations <span class="fs-3">🎉</span></h5>
+                            <p class="card-text mb-4">
+                                You have completed <strong>72%</strong> of your projects<br>
+                                Check your project progress below...
+                            </p>
+                            <a href="#" class="view-btn">
+                                <i class="fas fa-arrow-right me-2"></i>View Details
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 d-flex align-items-center justify-content-end">
+                        <img src="{% static '/img/dashimg.jpg' %}" alt="Dashboard Illustration" class="dashboard-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="col-lg-2 col-md-6 mb-3">
+            <div class="card dashboard-card h-100">
+                <div class="card-body">
+                    <h5 class="card-title card-header-style">House Owners</h5>
+                    <div class="stat-number">{{th}}</div>
+                    <p class="card-text">Check the details of house owners</p>
+                    <a href="#" class="view-btn">
+                        <i class="fas fa-users me-2"></i>View
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-2 col-md-6 mb-3">
+            <div class="card dashboard-card h-100">
+                <div class="card-body">
+                    <h5 class="card-title card-header-style">Contractors</h5>
+                    <div class="stat-number">{{tc}}</div>
+                    <p class="card-text">Check the details of contractors</p>
+                    <a href="#" class="view-btn">
+                        <i class="fas fa-hard-hat me-2"></i>View
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Second Row -->
+    <div class="row">
+        <!-- Ongoing Projects -->
+        <div class="col-lg-8 col-md-12 mb-4">
+            <div class="card dashboard-card">
+                <div class="card-body">
+                    <h5 class="card-title card-header-style text-center">Ongoing Projects</h5>
+
+                    <div class="progress-container">
+                        <div class="progress mb-2">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 25%"
+                                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <div class="progress-bar-label">Project 1 - 25% Complete</div>
+                    </div>
+
+                    <div class="progress-container">
+                        <div class="progress mb-2">
+                            <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50"
+                                aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <div class="progress-bar-label">Project 2 - 50% Complete</div>
+                    </div>
+
+                    <div class="progress-container">
+                        <div class="progress mb-2">
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: 75%"
+                                aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <div class="progress-bar-label">Project 3 - 75% Complete</div>
+                    </div>
+
+                    <div class="progress-container">
+                        <div class="progress mb-2">
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 100%"
+                                aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <div class="progress-bar-label">Project 4 - Ready for Delivery</div>
+                    </div>
+
+                    <div class="text-center mt-3">
+                        <a href="#" class="view-btn">
+                            <i class="fas fa-list me-2"></i>View All Projects
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side Stats -->
+        <div class="col-lg-4 col-md-12">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 mb-3">
+                    <div class="card dashboard-card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title card-header-style">Completed Projects</h5>
+                            <div class="stat-number">{{tcp}}</div>
+                            <p>Check the details of completed projects</p>
+                            <a href="#" class="view-btn">
+                                <i class="fas fa-check-circle me-2"></i>View
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-6 mb-3">
+                    <div class="card dashboard-card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title card-header-style">Total Projects</h5>
+                            <div class="stat-number"> {{tp}}</div>
+                            <p>Check the details of all projects</p>
+                            <a href="#" class="view-btn">
+                                <i class="fas fa-project-diagram me-2"></i>View
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card dashboard-card">
+                        <div class="card-body">
+                            <h5 class="card-title card-header-style">Recent Enquiries</h5>
+                            <div class="stat-number">{{enqs}}</div>
+                            <p>Check the latest enquiries</p>
+                            <a href="#" class="view-btn">
+                                <i class="fas fa-envelope me-2"></i>View
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

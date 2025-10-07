@@ -1,0 +1,270 @@
+{% extends 'homeownerbase.html' %}
+{% block home %}
+<style>
+    :root {
+        --primary-color: #3498db;
+        --secondary-color: #2ecc71;
+        --danger-color: #e74c3c;
+        --warning-color: #f39c12;
+        --dark-color: #34495e;
+        --light-color: #ecf0f1;
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f7fa;
+        color: #333;
+    }
+
+    .dashboard {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 20px;
+        max-width: 1800px;
+        margin: 0 auto;
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: white;
+        padding: 15px 25px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .filters {
+        display: flex;
+        gap: 15px;
+    }
+
+    select,
+    button {
+        padding: 8px 12px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        background-color: white;
+    }
+
+    .kpi-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+    }
+
+    .kpi-card {
+        background-color: white;
+        border-radius: 10px;
+        padding: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        position: relative;
+    }
+
+    .kpi-card h3 {
+        margin-top: 0;
+        font-size: 14px;
+        color: #7f8c8d;
+    }
+
+    .kpi-card .value {
+        font-size: 24px;
+        font-weight: bold;
+        margin: 10px 0;
+    }
+
+    .kpi-card .change {
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+    }
+
+    .positive {
+        color: var(--secondary-color);
+    }
+
+    .negative {
+        color: var(--danger-color);
+    }
+
+    .chart-container {
+        background-color: white;
+        border-radius: 10px;
+        padding: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .chart-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+
+    .chart-title {
+        margin-top: 0;
+        font-size: 16px;
+        color: var(--dark-color);
+    }
+
+    .alerts-container {
+        background-color: white;
+        border-radius: 10px;
+        padding: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .alert-item {
+        padding: 10px;
+        border-left: 4px solid var(--warning-color);
+        margin-bottom: 10px;
+        background-color: #fff9e6;
+    }
+
+    .alert-item.critical {
+        border-left-color: var(--danger-color);
+        background-color: #ffebee;
+    }
+
+    .footer-section {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+    }
+
+    @media (max-width: 768px) {
+        .kpi-container {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .chart-row {
+            grid-template-columns: 1fr;
+        }
+
+        .filters {
+            flex-direction: column;
+            width: 100%;
+        }
+    }
+</style>
+
+<div class="row">
+    <div class="col-sm-12">
+
+        <div class="dashboard">
+            <!-- Header Section -->
+            <div class="header">
+                <div>
+                    <h1>Hello HomeOwner🎉</h1>
+                    <p id="last-updated">Last Updated: Loading...</p>
+                </div>
+                <div class="filters">
+                    <select id="time-range">
+                        <option value="today">Today</option>
+                        <option value="week" selected>This Week</option>
+                        <option value="month">This Month</option>
+                        <option value="quarter">This Quarter</option>
+                        <option value="custom">Custom Range</option>
+                    </select>
+                    <select id="region">
+                        <option value="all" selected>All Regions</option>
+                        <option value="north">North</option>
+                        <option value="south">South</option>
+                        <option value="east">East</option>
+                        <option value="west">West</option>
+                    </select>
+                    <button id="refresh-btn">Refresh Data</button>
+                </div>
+            </div>
+
+            <!-- KPI Cards -->
+            <div class="kpi-container">
+                <div class="kpi-card">
+                    <h3>Total Projects</h3>
+                    <div class="value">34</div>
+                    <div class="change positive"> Project Update ↑ 12.5% since last day</div>
+                </div>
+                <div class="kpi-card">
+                    <h3>Completed Project</h3>
+                    <div class="value">24</div>
+                    <div class="change positive">Last completed 24/10/25</div>
+                </div>
+                <div class="kpi-card">
+                    <h3>Ongoing Projects</h3>
+                    <div class="value">17</div>
+                    <div class="change positive"> Project update ↑ 3.9% since last week</div>
+                </div>
+                <div class="kpi-card">
+                    <h3>Delay Projects</h3>
+                    <div class="value">7</div>
+                    <div class="change negative">Pending </div>
+                </div>
+            </div>
+
+            <!-- Main Charts -->
+            <div class="chart-row">
+                <div class="chart-container">
+                    <h3 class="chart-title">Revenue Trend (Last 12 Weeks)</h3>
+                    <canvas id="revenueChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3 class="chart-title">Revenue by Product Category</h3>
+                    <canvas id="categoryChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-row">
+                <div class="chart-container">
+                    <h3 class="chart-title">Sales by Region</h3>
+                    <canvas id="regionChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3 class="chart-title">Monthly Target Progress</h3>
+                    <canvas id="gaugeChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Alerts Section -->
+            <div class="alerts-container">
+                <h3>Alerts & Anomalies</h3>
+                <div class="alert-item critical">
+                    <strong>West Region Performance Drop:</strong> 15% decrease in sales compared to last week.
+                </div>
+                <div class="alert-item">
+                    <strong>Inventory Alert:</strong> Product "Premium Widget" stock below safety level (12 remaining).
+                </div>
+                <div class="alert-item">
+                    <strong>Shipping Delay:</strong> Average fulfillment time increased by 0.3 days this week.
+                </div>
+            </div>
+
+            <!-- Footer Section -->
+            <div class="footer-section">
+                <div class="chart-container">
+                    <h3 class="chart-title">Recent Activity</h3>
+                    <ul id="activity-log">
+                        <li>5 new high-value customers added</li>
+                        <li>Marketing campaign launched (Summer Sale)</li>
+                        <li>System maintenance scheduled for Friday</li>
+                    </ul>
+                </div>
+                <div class="chart-container">
+                    <h3 class="chart-title">Next Quarter Forecast</h3>
+                    <p>Projected Revenue: <strong>$535,000 - $580,000</strong></p>
+                    <p>Expected Growth: <strong class="positive">8-12%</strong></p>
+                </div>
+                <div class="chart-container">
+                    <h3 class="chart-title">Quick Actions</h3>
+                    <button>Generate Report</button>
+                    <button>Email Summary</button>
+                    <button>Contact Support</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

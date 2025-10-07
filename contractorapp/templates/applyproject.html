@@ -1,0 +1,30 @@
+{% extends 'contractorbase.html' %}
+{% block main %}
+<div class="row px-3">
+    <div class="col-sm-12">
+        <h3 class="text-center mt-4"> Project Application</h3>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="pro" class="form-label">Proposal Text</label>
+                <textarea name="proposal_text" id="pro" class="form-control" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="design" class="form-label">Uplode Design File</label>
+                <input type="file" name="design_file" id="design" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="budget" class="form-label">Estimated Budget</label>
+                <input type="number" name="estimated_budget" id="budget" class="form-control" step="0.01" required>
+            </div>
+            <div class="mb-3">
+                <label for="duration" class="form-label">Estimated Duration</label>
+                <input type="number" name="estimated_duration" id="duration" class="form-control" required>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

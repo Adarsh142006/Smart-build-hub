@@ -1,0 +1,97 @@
+{% extends 'contractorbase.html' %}
+{% load static %}
+
+{% block main %}
+<style>
+    .btn-brand-blue {
+        background-color: #1775F1;
+        color: white;
+        border: none;
+    }
+
+    .btn-brand-blue:hover {
+        background-color: #1263cc;
+        color: white;
+    }
+
+    .form-label {
+        font-weight: 500;
+        color: #333;
+    }
+
+    .card {
+        border: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        border-radius: 1rem;
+    }
+
+    .card-header {
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #eaeaea;
+    }
+
+    .section-title {
+        color: #1775F1;
+        font-weight: bold;
+    }
+
+    textarea {
+        resize: vertical;
+    }
+</style>
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card p-4">
+                <div class="card-header mb-4">
+                    <h3 class="section-title">Edit Contractor Profile</h3>
+                </div>
+
+                <form method="post" class="row g-4" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    <div class="col-md-6">
+                        <label for="name" class="form-label">Full Name</label>
+                        <input type="text" name="name" value="{{ contractor.name }}" id="name" class="form-control"
+                            required>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="con" class="form-label">Contact Number</label>
+                        <input type="text" name="contactno" value="{{ contractor.contactno }}" id="con"
+                            class="form-control" required>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="em" class="form-label">Email Address</label>
+                        <input type="email" name="email" value="{{ contractor.email }}" id="em" class="form-control"
+                            disabled>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="pro" class="form-label">Profile Picture</label>
+                        <input type="file" name="profile" id="pro" class="form-control">
+                    </div>
+
+                    <div class="col-12">
+                        <label for="ad" class="form-label">Full Address</label>
+                        <textarea name="address" id="ad" class="form-control" rows="3"
+                            required>{{ contractor.address }}</textarea>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="bio" class="form-label">Short Bio</label>
+                        <textarea name="bio" id="bio" class="form-control" rows="3">{{ contractor.bio }}</textarea>
+                    </div>
+
+                    <div class="col-12 text-end">
+                        <button class="btn btn-brand-blue px-4 py-2 rounded-pill" type="submit">Update Profile</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
